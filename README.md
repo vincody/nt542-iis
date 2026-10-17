@@ -9,6 +9,18 @@ Các script và lệnh trong repo này **sửa cấu hình hệ thống**: IIS, 
 
 ---
 
+# 👉 Đọc hướng dẫn trước khi chạy bất kỳ script nào
+
+Hãy **vào các thư mục `scripts` và đọc kỹ file hướng dẫn `.md` đi kèm** để hiểu rõ từng bước, tham số và rủi ro. README này chỉ là tóm tắt.
+
+| Bạn muốn | Vào thư mục | Đọc file |
+|---|---|---|
+| Chạy tự động (audit, sửa theo đợt, báo cáo) | [`run/automation/scripts`](run/automation/scripts) | [`run/automation/TuDongHoa_CIS_IIS10.md`](run/automation/TuDongHoa_CIS_IIS10.md) |
+| Làm thủ công 14 mục Manual, xem hướng dẫn từng tiêu chí | [`run/manual/scripts`](run/manual/scripts) | [`run/manual/HuongDan_CIS_IIS10.md`](run/manual/HuongDan_CIS_IIS10.md) |
+| Hiểu toàn bộ kế hoạch và phân tích | thư mục gốc | [`BaoCao_CIS_IIS10.md`](BaoCao_CIS_IIS10.md) |
+
+---
+
 # NT542: Hardening Microsoft IIS 10 theo CIS Benchmark v1.2.1
 
 Đồ án môn NT542. Mục tiêu: đánh giá và củng cố (hardening) một web server **Windows Server 2022 + IIS 10** theo **CIS Microsoft IIS 10 Benchmark v1.2.1**, kết hợp tự động hóa và làm thủ công.
@@ -46,6 +58,8 @@ Việc sửa chia **3 đợt theo mức rủi ro**: đợt 1 (thấp, 23 mục),
 
 ## Cách dùng nhanh (trong VM)
 
+> Đây chỉ là bản tóm tắt. Trước khi chạy, hãy mở thư mục `run/automation/scripts` và đọc [`TuDongHoa_CIS_IIS10.md`](run/automation/TuDongHoa_CIS_IIS10.md) (và [`HuongDan_CIS_IIS10.md`](run/manual/HuongDan_CIS_IIS10.md) cho phần thủ công) để biết đầy đủ thông tin.
+
 1. Cài VM **Windows Server 2022 Standard (Desktop Experience)**, thêm đĩa ảo thứ hai (D:), **chụp snapshot**.
 2. Chép thư mục `run` vào VM, mở **PowerShell as Administrator**:
 
@@ -81,14 +95,6 @@ Kết quả (CSV, JSON, báo cáo HTML) được ghi vào `run\automation\out\`.
 - Đã chạy thử trên **IIS và registry giả lập**: từng phần (Audit, Remediate, Audit lại), script chạy một lần (Audit, Remediate 3 đợt, Audit lại, Report), `-WhatIf`, id không tồn tại.
 - **Chưa chạy trên IIS thật.** `00-Setup-Lab.ps1` và `01-Seed-Baseline.ps1` mới chỉ kiểm tra cú pháp.
 - Bộ script **không thay thế CIS-CAT** (công cụ đánh giá chính thức của CIS). Kết quả nên báo cáo là "đạt X/Y tiêu chí trong phạm vi đã chọn, kèm ngoại lệ", không phải "đạt chuẩn CIS".
-
-## Không có trong repo
-
-Một số file được `.gitignore` bỏ qua, mỗi người tự có trên máy:
-
-- **`CIS_Microsoft_IIS_10_Benchmark_v1.2.1.pdf`**: tài liệu của CIS có điều khoản sử dụng riêng, không phát tán trong repo công khai. Tải từ trang của CIS (cần đăng ký) và đặt cạnh các file khác.
-- File Excel theo dõi tiến độ (`CIS_IIS10_Tracker*.xlsx`) và ảnh yêu cầu của thầy (`yeu_cau.jpg`).
-- Thư mục kết quả `out/` và file `*.bak` do script sinh ra.
 
 ## Nguồn
 
