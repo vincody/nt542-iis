@@ -1,0 +1,14 @@
+# Excel tracking sheets
+CIS_IIS10_Tracker.xlsx
+CIS_IIS10_Tracker_Sheets.xlsx
+
+# Requirement image
+yeu_cau.jpg
+
+# CIS benchmark PDF: copyrighted, has its own terms of use, do not publish in a public repo
+CIS_Microsoft_IIS_10_Benchmark_v1.2.1.pdf
+
+# Script output (audit/remediate results, backups): machine specific, regenerated on each run
+out/
+**/out/
+*.bak
